@@ -1,4 +1,6 @@
 import React from 'react';
+import Particles from 'react-particles-js';
+
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
@@ -7,19 +9,19 @@ import './App.css';
 
 const particlesOptions = {
   particles: {
-    line_linked: {
-      shadow: {
+    number: {
+      value: 50,
+      density: {
         enable: true,
-        color: '#3CA9D1',
-        blur: 5
-      }
+      value_area: 800     
+    }
     }
   }
 }
 function App() {
   return (
     <div className="App">
-      <Particles 
+      <Particles className='particles'
         params ={particlesOptions}
       />
       <Navigation />
