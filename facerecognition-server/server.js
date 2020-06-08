@@ -1,10 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const app = express();
+const cors = require('cors');
 
 // Body parser middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(cors());
 
 //const bodyParser = require('body-parser')
 const database = {
