@@ -11,11 +11,8 @@ import Register from './components/Register/Register';
 
 import './App.css';
 
-const Clarifai = require('clarifai');
 
-const app = new Clarifai.App({
- apiKey: '223670dbbd6d48e19b8da62249c07922'
-});
+
 
 const particlesOptions = {
   particles: {
@@ -87,10 +84,14 @@ class App extends Component {
     }
   onButtonSubmit = () => {
       this.setState({imageUrl: this.state.input})
-      app.models
-      .predict(
-        "a403429f2ddf4b49b307e318f00e528b",
-        this.state.input)
+      fetch('http://localhost:3000/imageurl', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          input: this.state.input
+        })
+      })
+      .then(response => response.json())
       .then(response => {
         if (response) {
           fetch('http://localhost:3000/image', {
